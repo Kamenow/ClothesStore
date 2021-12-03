@@ -206,3 +206,9 @@ input[type='text'] {
   color: white;
   text-align: center;
 }
+
+.profile {
+  width: 20%;
+  height: 20%;
+  margin-right: 30%;
+}
