@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar.js';
 import Landing from './components/layout/Landing.js';
 import './App.css';
-import Login from './components/layout/Login.js';
+import Login from './components/auth/Login.js';
 import Footer from './components/layout/Footer.js';
+import Register from './components/auth/Register.js';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/auth/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </Fragment>
