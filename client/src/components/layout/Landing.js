@@ -8,7 +8,7 @@ const Landing = () => {
                 <h1>Clothes & <span>Fashion</span> </h1>
                 <p className="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, incidunt!</p>
 
-                <button className="cn"><Link href="#">Browse</Link></button>
+                <button className="cn"><Link to="#">Browse</Link></button>
             </div>
         </div>
     )
