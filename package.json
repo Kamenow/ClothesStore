@@ -4,16 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node --max-http-header-size=1024 server",
+    "server": "nodemon --max-http-header-size=1024 server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm rund server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "QjoBaby",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
     "gravatar": "^1.8.2",
