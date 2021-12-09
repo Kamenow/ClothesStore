@@ -6,7 +6,13 @@ const Navbar = () => {
         <div>
             <div className="navbar">
                 <div className="icon">
-                    <h1 className="logo" >Yavor Store</h1>
+                    <h1 className="logo" >
+                        <Link to="/"
+                            style={{
+                                textDecoration: 'none',
+                                color: 'brown'
+                            }}>Yavor Store</Link>
+                    </h1>
                 </div>
 
                 <div className="menu">
