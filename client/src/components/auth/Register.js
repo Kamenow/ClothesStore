@@ -1,10 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { setAlert } from '../../actions/alert.js';
+import { register } from '../../actions/auth.js';
+// import axios from 'axios';
 import PropTypes from 'prop-types'
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,36 +29,28 @@ const Register = ({ setAlert }) => {
         } else {
             setAlert('Success');
 
-            const newUser = {
-                name,
-                email,
-                password,
-            };
+            // const newUser = {
+            //     name,
+            //     email,
+            //     password,
+            // };
 
-            try {
-                const config = {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                };
+            // try {
+            //     const config = {
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         }
+            //     };
 
-                const body = JSON.stringify(newUser);
+            //     const body = JSON.stringify(newUser);
 
-                // "proxy": "http://localhost:3000"
-                // axios.post('/api/users', body)
-                // .then(res => {
-                //     console.log(res);
-                // })
-                // .catch(err => {
-                //     console.log(err);
-                // });
-
-                console.log(body);
-                const res = await axios.post('http://localhost:5000/api/users', body, config);
-                console.log(res.data);
-            } catch (err) {
-                console.error(err);
-            }
+            //     console.log(body);
+            //     const res = await axios.post('http://localhost:5005/api/users', body, config);
+            //     console.log(res.data);
+            // } catch (err) {
+            //     console.error(err);
+            // }
+            register({ name, email, password })
         }
     }
 
@@ -71,10 +64,10 @@ const Register = ({ setAlert }) => {
                     </div>
 
                     <form onSubmit={e => onSubmit(e)}>
-                        <input type="text" className="login" name="name" value={name} onChange={e => onChange(e)} required placeholder="name" />
-                        <input type="text" className="login" name="email" value={email} onChange={e => onChange(e)} required placeholder="email" />
-                        <input type="password" className="login" name="password" value={password} onChange={e => onChange(e)} required placeholder="password" />
-                        <input type="password" className="login" name="rePassword" value={rePassword} onChange={e => onChange(e)} required placeholder="repeat password" />
+                        <input type="text" className="login" name="name" value={name} onChange={e => onChange(e)} placeholder="name" />
+                        <input type="text" className="login" name="email" value={email} onChange={e => onChange(e)} placeholder="email" />
+                        <input type="password" className="login" name="password" value={password} onChange={e => onChange(e)} placeholder="password" />
+                        <input type="password" className="login" name="rePassword" value={rePassword} onChange={e => onChange(e)} placeholder="repeat password" />
                         <input type="submit" value="Register" />
                     </form>
                 </div>
@@ -85,6 +78,7 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
