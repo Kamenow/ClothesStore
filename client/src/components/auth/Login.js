@@ -11,9 +11,6 @@ const Login = () => {
 
     const { name, email } = formData;
 
-    console.log(name);
-    console.log(email);
-
     const onChange = e =>
         setFormData({
             ...formData,
