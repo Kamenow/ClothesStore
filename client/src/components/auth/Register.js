@@ -5,7 +5,7 @@ import { register } from '../../actions/auth.js';
 // import axios from 'axios';
 import PropTypes from 'prop-types'
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,30 +28,12 @@ const Register = ({ setAlert, register }) => {
             setAlert('Passwords do not match', 'danger');
         } else {
             setAlert('Success');
-
-            // const newUser = {
-            //     name,
-            //     email,
-            //     password,
-            // };
-
-            // try {
-            //     const config = {
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         }
-            //     };
-
-            //     const body = JSON.stringify(newUser);
-
-            //     console.log(body);
-            //     const res = await axios.post('http://localhost:5005/api/users', body, config);
-            //     console.log(res.data);
-            // } catch (err) {
-            //     console.error(err);
-            // }
             register({ name, email, password })
         }
+    };
+
+    if (isAuthenticated) {
+
     }
 
     return (
@@ -79,6 +61,11 @@ const Register = ({ setAlert, register }) => {
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
