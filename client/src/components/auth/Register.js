@@ -1,15 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { setAlert } from '../../actions/alert.js'
+import { setAlert } from '../../actions/alert.js';
+import PropTypes from 'prop-types'
 
-const Register = (props) => {
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         rePassword: ''
-    })
+    });
 
     const { name, email, password, rePassword } = formData;
 
@@ -23,40 +24,40 @@ const Register = (props) => {
         e.preventDefault();
 
         if (password !== rePassword) {
-            props.setAlert('Passwords do not match', 'danger');
+            setAlert('Passwords do not match', 'danger');
         } else {
-            console.log('Success')
+            setAlert('Success');
 
-            // const newUser = {
-            //     name,
-            //     email,
-            //     password,
-            // };
+            const newUser = {
+                name,
+                email,
+                password,
+            };
 
-            // try {
-            //     const config = {
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         }
-            //     };
+            try {
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
 
-            //     const body = JSON.stringify(newUser);
+                const body = JSON.stringify(newUser);
 
-            //     // "proxy": "http://localhost:3000"
-            //     // axios.post('http://localhost:5000/api/users', body)
-            //     // .then(res => {
-            //     //     console.log(res);
-            //     // })
-            //     // .catch(err => {
-            //     //     console.log(err);
-            //     // });
+                // "proxy": "http://localhost:3000"
+                // axios.post('/api/users', body)
+                // .then(res => {
+                //     console.log(res);
+                // })
+                // .catch(err => {
+                //     console.log(err);
+                // });
 
-            //     console.log(body);
-            //     const res = await axios.post('http://localhost:5000/api/users', body, config);
-            //     console.log(res.data);
-            // } catch (err) {
-            //     console.error(err);
-            // }
+                console.log(body);
+                const res = await axios.post('http://localhost:5000/api/users', body, config);
+                console.log(res.data);
+            } catch (err) {
+                console.error(err);
+            }
         }
     }
 
@@ -81,5 +82,9 @@ const Register = (props) => {
         </Fragment>
     )
 }
+
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+};
 
 export default connect(null, { setAlert })(Register);
