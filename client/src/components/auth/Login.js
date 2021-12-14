@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import Landing from '../../components/layout/Landing.js'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth.js';
@@ -29,7 +29,9 @@ const Login = ({ login, isAuthenticated }) => {
     // Redirect if logged in
 
     if (isAuthenticated) {
-
+        // <Routes>
+        //     <Route path="*" element={<Navigate to="/" />} />
+        // </Routes>
     }
 
     return (
