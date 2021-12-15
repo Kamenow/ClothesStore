@@ -9,7 +9,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Fragment>
             <li><Link to="#!" onClick={logout}>Logout</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/profile-form">Create Profile</Link></li>
+            <li><Link to="/create-profile">Create Profile</Link></li>
         </Fragment>
     );
 

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert.js';
 import { register } from '../../actions/auth.js';
-// import axios from 'axios';
 import PropTypes from 'prop-types'
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -12,6 +12,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         password: '',
         rePassword: ''
     });
+
+    const navigate = useNavigate();
 
     const { name, email, password, rePassword } = formData;
 
@@ -33,7 +35,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     };
 
     if (isAuthenticated) {
-
+        navigate('/dashboard')
     }
 
     return (

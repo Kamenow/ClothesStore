@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner.js';
+import DashboardActions from './DashboardActions.js';
 import { getCurrentProfile } from '../../actions/profile.js';
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
@@ -10,18 +11,20 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
         getCurrentProfile();
     }, []);
 
-    return loading && profile === null ? <Spinner /> : <Fragment >
+    return loading && profile === null ? (<Spinner />) : (<Fragment >
         <h1>Dashboard</h1>
         <p>Welcome {user && user.name}</p>
         {profile !== null
-            ? <Fragment>has</Fragment>
+            ? <Fragment>
+                <DashboardActions />
+            </Fragment>
             : <Fragment>
                 <p>You have not yet setup a profile, please add some info</p>
                 <Link to='/profile-form'>
                     Create Profile
                 </Link>
             </Fragment>}
-    </Fragment >
+    </Fragment >)
 }
 
 Dashboard.propTypes = {

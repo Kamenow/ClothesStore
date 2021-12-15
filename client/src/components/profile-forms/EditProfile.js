@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 // import { withRouter } from "react-router";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile } from '../../actions/profile.js';
+import { createProfile, getCurrentProfile } from '../../actions/profile.js';
 
-const CreateProfile = ({ createProfile }) => {
+const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentProfile }) => {
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -14,6 +14,17 @@ const CreateProfile = ({ createProfile }) => {
     });
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getCurrentProfile();
+
+        setFormData({
+            company: loading || !profile.company ? '' : profile.company,
+            website: loading || !profile.website ? '' : profile.website,
+            location: loading || !profile.location ? '' : profile.location,
+            bio: loading || !profile.bio ? '' : profile.bio,
+        });
+    }, []);
 
     const {
         company,
@@ -31,9 +42,9 @@ const CreateProfile = ({ createProfile }) => {
     const onSubmit = async e => {
         e.preventDefault();
 
-        createProfile(formData);
+        createProfile(formData, true);
 
-        navigate('/dashboard')
+        navigate('/dashboard');
     };
 
 
@@ -63,7 +74,7 @@ const CreateProfile = ({ createProfile }) => {
                             <input type="text" className="login" name="bio" value={bio} onChange={e => onChange(e)} placeholder="bio" />
                             <small>an short summary</small>
                         </div>
-                        <input type="submit" value="Create Profile" />
+                        <input type="submit" value="Edit Profile" />
                     </form>
                 </div>
             </div >
@@ -71,8 +82,14 @@ const CreateProfile = ({ createProfile }) => {
     )
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
     createProfile: PropTypes.func.isRequired,
+    getCurrentProfile: PropTypes.func.isRequired,
+    profile: PropTypes.object.isRequired,
 }
 
-export default connect(null, { createProfile })(CreateProfile)
+const mapStateToProps = state => ({
+    profile: state.profile
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(EditProfile)

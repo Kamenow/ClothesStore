@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from 'react';
-// import Landing from '../../components/layout/Landing.js'
-// import { Navigate, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth.js';
-// import axios from 'axios';
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     })
+
+    const navigate = useNavigate();
 
     const { email, password } = formData;
 
@@ -29,9 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
     // Redirect if logged in
 
     if (isAuthenticated) {
-        // <Routes>
-        //     <Route path="*" element={<Navigate to="/" />} />
-        // </Routes>
+        navigate('/dashboard')
     }
 
     return (

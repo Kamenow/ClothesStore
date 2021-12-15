@@ -7,7 +7,8 @@ import Register from './components/auth/Register.js';
 import Login from './components/auth/Login.js';
 import Alert from './components/layout/Alert.js';
 import Dashboard from './components/dashboard/Dashboard.js';
-import ProfileForms from './components/profile-forms/CreateProfile.js'
+import CreateProfile from './components/profile-forms/CreateProfile.js';
+import EditProfile from './components/profile-forms/EditProfile.js';
 import PrivateRoute from './components/routing/PrivateRoute.js';
 // Redux
 import { Provider } from 'react-redux';
@@ -40,8 +41,11 @@ const App = () => {
               path="/dashboard" element={
                 <PrivateRoute component={Dashboard} />
               } />
-            <Route path="/profile-form" element={
-              <PrivateRoute component={ProfileForms} />
+            <Route path="/create-profile" element={
+              <PrivateRoute component={CreateProfile} />
+            } />
+            <Route path="/edit-profile" element={
+              <PrivateRoute component={EditProfile} />
             } />
           </Routes>
           <Footer />
