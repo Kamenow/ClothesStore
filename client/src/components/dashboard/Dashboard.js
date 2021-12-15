@@ -17,7 +17,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
             ? <Fragment>has</Fragment>
             : <Fragment>
                 <p>You have not yet setup a profile, please add some info</p>
-                <Link to='/create-profile'>
+                <Link to='/profile-form'>
                     Create Profile
                 </Link>
             </Fragment>}

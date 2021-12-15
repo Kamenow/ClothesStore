@@ -1,5 +1,5 @@
 * {
-  maring: 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -206,6 +206,7 @@ input[type='password'] {
   background-color: brown;
   color: white;
   text-align: center;
+  height: 2%;
 }
 
 .profile {
