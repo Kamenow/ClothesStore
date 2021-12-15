@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import Landing from '../../components/layout/Landing.js'
-import { Navigate, Routes, Route } from 'react-router-dom';
+// import Landing from '../../components/layout/Landing.js'
+// import { Navigate, Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth.js';
