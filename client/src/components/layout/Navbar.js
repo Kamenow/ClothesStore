@@ -9,6 +9,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Fragment>
             <li><Link to="#!" onClick={logout}>Logout</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/profile-form">Create Profile</Link></li>
         </Fragment>
     );
 
@@ -35,7 +36,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 <div className="menu">
                     <ul>
                         <li><Link to="#">Products</Link></li>
-                        <li><Link to="#">Contact</Link></li>
                         {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
                     </ul>
                 </div>

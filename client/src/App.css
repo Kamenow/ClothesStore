@@ -215,3 +215,9 @@ input[type='password'] {
 }
 
 /* Dashboard */
+
+/* Create Dashboard form */
+
+small {
+  color: gray;
+}
