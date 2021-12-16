@@ -11,10 +11,20 @@ const PostSchema = new Schema({
         required: true
     },
     name: {
-        type: String
+        type: String,
+        required: true
     },
-    avatar: {
-        type: String
+    image: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    bio: {
+        type: String,
+        required: true
     },
     likes: [
         {

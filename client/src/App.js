@@ -10,6 +10,8 @@ import Dashboard from './components/dashboard/Dashboard.js';
 import CreateProfile from './components/profile-forms/CreateProfile.js';
 import EditProfile from './components/profile-forms/EditProfile.js';
 import PrivateRoute from './components/routing/PrivateRoute.js';
+import Profiles from './components/profiles/Profiles.js';
+import Posts from './components/posts/Posts.js';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store.js';
@@ -37,6 +39,8 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/profiles" element={<Profiles />} />
+            <Route path="/posts" element={<Posts />} />
             <Route
               path="/dashboard" element={
                 <PrivateRoute component={Dashboard} />
