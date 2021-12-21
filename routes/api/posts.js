@@ -12,7 +12,16 @@ const User = require('../../models/Users.js');
 // @access  Private
 
 router.post('/', [auth, [
-    check('text', 'Text is required')
+    check('title', 'title is required')
+        .not()
+        .isEmpty(),
+    check('price', 'price is required')
+        .not()
+        .isEmpty(),
+    check('bio', 'bio is required')
+        .not()
+        .isEmpty(),
+    check('image', 'image is required')
         .not()
         .isEmpty()
 ]], async (req, res) => {
@@ -24,10 +33,13 @@ router.post('/', [auth, [
         const user = await User.findById(req.user.id).select('-password');
 
         const newPost = new Post({
-            text: req.body.text,
+            user: req.user.id,
             name: user.name,
             avatar: user.avatar,
-            user: req.user.id,
+            title: req.body.title,
+            image: req.body.bio,
+            price: req.body.price,
+            bio: req.body.bio,
         })
 
         const post = await newPost.save();

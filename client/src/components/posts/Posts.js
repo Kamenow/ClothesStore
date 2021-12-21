@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner.js';
+import PostItem from './PostItem.js';
 import { getPosts } from '../../actions/post.js';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
@@ -10,9 +11,13 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     }, [getPosts])
 
     return (
-        <div class="storeItem">
-
-        </div>
+        <Fragment>
+            <div className="storeItem">
+                {posts.map(post => (
+                    < PostItem key={post._id} post={post} />
+                ))}
+            </div>
+        </Fragment>
     )
 }
 
