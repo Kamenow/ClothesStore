@@ -20,7 +20,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
             </Fragment>
             : <Fragment>
                 <p>You have not yet setup a profile, please add some info</p>
-                <Link to='/profile-form'>
+                <Link to='/create-profile'>
                     Create Profile
                 </Link>
             </Fragment>}

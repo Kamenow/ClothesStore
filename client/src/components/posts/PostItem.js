@@ -25,7 +25,6 @@ const PostItem = ({
                 </Link>
                 <button onClick={e => removeLike(_id)}>Unlike</button>
                 <button onClick={e => addLike(_id)}>Like</button>
-                <button>comment</button>
                 {!auth.loading && user == auth.user._id && (
                     <button onClick={e => deletePost(_id)}>delete</button>
                 )}

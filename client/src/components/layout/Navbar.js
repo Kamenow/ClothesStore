@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth.js';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, profile: { profile }, logout }) => {
     const authLinks = (
         <Fragment>
             <li><Link to="#!" onClick={logout}>Logout</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
-            <li><Link to="/create-profile">Create Profile</Link></li>
+            <li><Link to="/create-post">Create Post</Link></li>
         </Fragment>
     );
 
@@ -47,10 +47,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 Navbar.propTypes = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    profile: state.profile
 });
 
 export default connect(
