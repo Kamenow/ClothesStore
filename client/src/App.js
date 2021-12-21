@@ -12,6 +12,7 @@ import EditProfile from './components/profile-forms/EditProfile.js';
 import PrivateRoute from './components/routing/PrivateRoute.js';
 import Profiles from './components/profiles/Profiles.js';
 import Posts from './components/posts/Posts.js';
+import Post from './components/post/Post.js';
 import PostForm from './components/posts/PostForm.js';
 // Redux
 import { Provider } from 'react-redux';
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/profiles" element={<Profiles />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<Post />} />
             <Route path="/dashboard" element={
               <PrivateRoute component={Dashboard} />
             } />

@@ -11,12 +11,14 @@ const PostItem = ({
     removeLike,
     deletePost,
     auth,
-    post: { _id, user, title, name, image, price, bio, likes, comments, date } }) => {
+    post: { _id, user, title, name, image, price, bio, likes, comments, date },
+    showActions
+}) => {
 
     return (
         <Fragment>
             <div className="card" >
-                <Link to={`/post/${_id}`}>
+                <Link to={`/posts/${_id}`}>
                     <a><img src={image} alt="Clothing Image" /></a>
                     <h1>From: {name}</h1>
                     <h1>{title}</h1>
