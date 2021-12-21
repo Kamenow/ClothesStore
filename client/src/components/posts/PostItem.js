@@ -1,10 +1,22 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
+import { addLike, removeLike } from '../../actions/post.js';
+import Posts from './Posts.js';
 
-const PostItem = ({ auth, post: { _id, user, title, name, image, price, bio, likes, comments, date } }) => {
+const PostItem = ({
+    addLike,
+    removeLike,
+    auth,
+    post: { _id, user, title, name, image, price, bio, likes, comments, date } }) => {
+
+    // const [isLiked, useIsLiked] = useState(false)
+
+
+    // useIsLiked()
+
     return (
         <Fragment>
             <div className="card" >
@@ -15,7 +27,9 @@ const PostItem = ({ auth, post: { _id, user, title, name, image, price, bio, lik
                     <p className="price" >{price}$</p >
                     <p>{bio}</p>
                 </Link>
-                <button>Like</button>
+                {/* {isLiked == false} */}
+                <button onClick={e => removeLike(_id)}>Unlike</button>
+                <button onClick={e => addLike(_id)}>Like</button>
                 <button>comment</button>
                 <p>Likes: {likes.length} Comments: {comments.length}</p>
             </div >
@@ -32,4 +46,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {})(PostItem)
+export default connect(mapStateToProps, { addLike, removeLike })(PostItem)
