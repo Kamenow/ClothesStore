@@ -29,7 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
     // Redirect if logged in
 
     if (isAuthenticated) {
-        navigate('/dashboard')
+        navigate('/posts')
     }
 
     return (

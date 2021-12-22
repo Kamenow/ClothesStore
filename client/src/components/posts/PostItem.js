@@ -17,20 +17,24 @@ const PostItem = ({
 
     return (
         <Fragment>
-            <div className="card" >
-                <Link to={`/posts/${_id}`}>
+            <div className="card postItem " >
+                <Link className='removeDecoration' to={`/posts/${_id}`}>
                     <a><img src={image} alt="Clothing Image" /></a>
-                    <h1>From: {name}</h1>
-                    <h1>{title}</h1>
-                    <p className="price" >{price}$</p >
-                    <p>{bio}</p>
+                    <h2>From: {name}</h2>
+                    <h2>Title: {title}</h2>
+                    <p className="price" >Price: {price}$</p >
+                    <p>Bio: {bio}</p>
                 </Link>
-                <button onClick={e => removeLike(_id)}>Unlike</button>
-                <button onClick={e => addLike(_id)}>Like</button>
-                {!auth.loading && user == auth.user._id && (
-                    <button onClick={e => deletePost(_id)}>delete</button>
+                {showActions && (
+                    <Fragment>
+                        <button onClick={e => removeLike(_id)}>Unlike</button>
+                        <button onClick={e => addLike(_id)}>Like</button>
+                        {!auth.loading && user == auth.user._id && (
+                            <button onClick={e => deletePost(_id)}>delete</button>
+                        )}
+                        <p>Likes: {likes.length} Comments: {comments.length}</p>
+                    </Fragment>
                 )}
-                <p>Likes: {likes.length} Comments: {comments.length}</p>
             </div >
         </Fragment>
     )

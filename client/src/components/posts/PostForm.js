@@ -46,10 +46,11 @@ const PostForm = ({ addPost, isAuthenticated }) => {
                     </div>
 
                     <form onSubmit={e => onSubmit(e)}>
-                        <input type="text" className="login" name="title" onChange={e => onChange(e)} placeholder="title" />
-                        <input type="text" className="login" name="price" onChange={e => onChange(e)} placeholder="price" />
-                        <input type="text" className="login" name="bio" onChange={e => onChange(e)} placeholder="bio" />
-                        <input type="text" className="login" name="image" onChange={e => onChange(e)} placeholder="image" />
+                        <input type="text" className="login" required name="title" onChange={e => onChange(e)} placeholder="title" />
+                        <input type="text" className="login" required name="price" onChange={e => onChange(e)} placeholder="price" />
+                        <small></small>
+                        <input type="text" className="login" required name="bio" onChange={e => onChange(e)} placeholder="bio" />
+                        <input type="text" className="login" required name="image" onChange={e => onChange(e)} placeholder="image" />
                         <input type="submit" value="Create Post" />
                     </form>
                 </div>

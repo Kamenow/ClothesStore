@@ -44,6 +44,7 @@ const App = () => {
             <Route path="/profiles" element={<Profiles />} />
             <Route path="/posts" element={<Posts />} />
             <Route path="/posts/:id" element={<Post />} />
+
             <Route path="/dashboard" element={
               <PrivateRoute component={Dashboard} />
             } />

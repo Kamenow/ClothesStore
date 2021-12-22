@@ -231,6 +231,11 @@ small {
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.storeItem .removeDecoration {
+  text-decoration: none;
 }
 
 .card {
@@ -238,10 +243,11 @@ small {
   margin-top: 2%;
   margin-left: 2%;
   margin-right: 2%;
-  height: 30rem;
+  height: 25rem;
   width: 17%;
   text-align: center;
   font-family: arial;
+  text-decoration: none;
 }
 
 .price {
@@ -268,4 +274,143 @@ small {
 .card img {
   width: 100%;
   height: 50%;
+}
+
+/* Dashboard */
+
+.dashboardWrapper {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.lastLiked {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.dashboardWrapper .yo {
+  font-size: 1rem;
+  padding: 7px;
+}
+
+.lastLiked .postItem h2 {
+  color: black;
+}
+
+.lastLiked .postItem p {
+  color: black;
+}
+
+.dashboardWrapper h1 {
+  font-size: 3rem;
+}
+
+.dashboardWrapper .editCreate {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 10%;
+  font-size: 2rem;
+  padding: 1%;
+  border-radius: 10px;
+  border: 1px #222222 solid;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+.dashboardWrapper .nodec {
+  color: red;
+  text-decoration: none;
+}
+
+.lastLikedTextSize {
+  font-size: 1.5rem;
+}
+
+/* specific post item */
+
+.postItemDetail {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.postItemDetail .postItem {
+  margin: 0 auto;
+}
+
+.postItemDetail .commentsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.addCommentForm {
+  padding-left: 40%;
+  padding-right: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.postItemDetail .comments {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.comment {
+  background-color: white;
+  border: 2px black solid;
+  padding: 2%;
+  width: 10%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.commentContent p {
+  font-size: 1rem;
+}
+
+.comment button {
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+/* alert */
+
+.alertPosition {
+  margin-top: 5%;
+  margin-bottom: 0px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.alert-success {
+  color: green;
+}
+
+.alert-error {
+  color: red;
+}
+
+.alert-danger {
+  color: red;
+}
+
+/* Remove decoration */
+
+.removeDecoration {
+  text-decoration: none;
 }

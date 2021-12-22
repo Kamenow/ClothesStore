@@ -30,36 +30,36 @@ export const getPosts = () => async dispatch => {
 
 // Add like
 export const addLike = (postId) => async dispatch => {
-    try {
-        const res = await axios.put(`http://localhost:8000/api/posts/like/${postId}`);
+    // try {
+    const res = await axios.put(`http://localhost:8000/api/posts/like/${postId}`);
 
-        dispatch({
-            type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
-        });
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
+    dispatch({
+        type: UPDATE_LIKES,
+        payload: { postId, likes: res.data }
+    });
+    // } catch (err) {
+    //     dispatch({
+    //         type: POST_ERROR,
+    //         payload: { msg: err.response.statusText, status: err.response.status }
+    //     });
+    // }
 }
 
 // Remove like
 export const removeLike = (postId) => async dispatch => {
-    try {
-        const res = await axios.put(`http://localhost:8000/api/posts/unlike/${postId}`);
+    // try {
+    const res = await axios.put(`http://localhost:8000/api/posts/unlike/${postId}`);
 
-        dispatch({
-            type: UPDATE_LIKES,
-            payload: { postId, likes: res.data }
-        });
-    } catch (err) {
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
+    dispatch({
+        type: UPDATE_LIKES,
+        payload: { postId, likes: res.data }
+    });
+    // } catch (err) {
+    //     dispatch({
+    //         type: POST_ERROR,
+    //         payload: { msg: err.response.statusText, status: err.response.status }
+    //     });
+    // }
 }
 
 // Delete like
@@ -108,12 +108,12 @@ export const addPost = (title, price, bio, image) => async dispatch => {
 
         dispatch(setAlert('Post Created', 'success'));
     } catch (err) {
-        console.log(err)
+        dispatch(setAlert('Something went wrong', 'error'))
 
-        dispatch({
-            type: POST_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+        // dispatch({
+        // type: POST_ERROR,
+        // payload: { msg: err.response.statusText, status: err.response.status }
+        // });
     }
 }
 

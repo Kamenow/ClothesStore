@@ -11,13 +11,17 @@ const CommentItem = ({
     deleteComment
 }) => {
     return (
-        <div>
-            <h1>from: {name}</h1>
-            <h1>text: {text}</h1>
+        <div className='comment' >
+            <div className='commentContent'>
+                <p>from: {name}</p>
+                <p>text: {text}</p>
 
-            {!auth.loading && user === auth.user._id && (
-                <button onClick={e => deleteComment(postId, _id)} type='button'>delete</button>
-            )}
+                {!auth.loading && user === auth.user._id && (
+                    <button onClick={e => deleteComment(postId, _id)} type='button'>delete</button>
+                )}
+            </div>
+
+
         </div>
     )
 }

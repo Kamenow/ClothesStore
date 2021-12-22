@@ -35,7 +35,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     };
 
     if (isAuthenticated) {
-        navigate('/dashboard')
+        navigate('/posts')
     }
 
     return (
