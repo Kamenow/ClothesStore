@@ -33,7 +33,7 @@ const CreateProfile = ({ createProfile }) => {
 
         createProfile(formData);
 
-        navigate('/dashboard')
+        navigate('/posts');
     };
 
 

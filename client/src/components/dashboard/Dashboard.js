@@ -27,8 +27,12 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     )
     let sliced = three.slice(0, 3);
 
-    return loading && profile === null
-        ? (navigate('/create-profile'))
+    if (profile === null) {
+        navigate('/create-profile')
+    }
+
+    return profile === null
+        ? <Fragment>{navigate('/create-profile')}</Fragment>
         : (
             <div className='dashboardWrapper'>
                 <Fragment >
