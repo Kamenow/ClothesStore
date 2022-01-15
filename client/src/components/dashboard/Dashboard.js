@@ -12,7 +12,6 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading }, post: { posts } }) => {
     useEffect(() => {
         getCurrentProfile();
-
     }, []);
 
     const navigate = useNavigate();

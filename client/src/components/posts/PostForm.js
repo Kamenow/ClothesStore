@@ -25,6 +25,8 @@ const PostForm = ({ addPost, isAuthenticated }) => {
     const onSubmit = async e => {
         e.preventDefault();
 
+        console.log(`title:${title}price:${price}bio:${bio}image:${image}`)
+
         addPost(title, price, bio, image);
 
         navigate('/posts')
