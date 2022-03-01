@@ -1,24 +1,35 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   width: 100%;
   height: 100%;
-  background: url(../src/img/1.jpg);
+  /* background: url(../src/img/1.jpg); */
   background-position: center;
   background-size: cover;
 }
 
+.landing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../src/img/1.jpg);
+  z-index: 0;
+}
+
 .navbar {
   width: 100%;
-  height: 75%;
-  margin: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .icon {
-  float: left;
+  position: absolute;
 }
 
 .logo {
@@ -127,6 +138,25 @@ ul li a {
   margin-top: 5%;
 }
 
+.formContent form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContent form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContent form input {
+  width: 98%;
+}
+
+.formContent input[type='submit'] {
+  margin: 0 auto 2rem auto;
+  width: 50%;
+}
+
 .formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
@@ -199,7 +229,7 @@ input[type='password'] {
 }
 
 .footerWrapper {
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -232,6 +262,36 @@ small {
   width: 100%;
   flex-wrap: wrap;
   text-decoration: none;
+  margin-top: 10%;
+  gap: 4rem;
+}
+
+.postItem {
+  position: relative;
+  z-index: 1;
+}
+
+.likes-comments {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.likes-comments .fa-heart {
+  color: red;
+}
+
+.likes-comments .fa-comment {
+  color: black;
+}
+
+.storeItem .background-image {
+  background-image: url(../src/img/2.jpg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .storeItem .removeDecoration {
@@ -240,27 +300,60 @@ small {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 2%;
-  margin-left: 2%;
-  margin-right: 2%;
-  height: 25rem;
   width: 17%;
   text-align: center;
   font-family: arial;
   text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .price {
-  color: black;
+  color: brown;
   font-size: 1.5rem;
+}
+
+.from {
+  color: brown;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.title {
+  color: brown;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.button-wrapper i {
+  background-color: black;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+.button-wrapper .like,
+.unlike {
+  color: white;
+}
+
+.button-wrapper .delete {
+  color: red;
 }
 
 .card button {
   border: none;
   outline: 0;
   padding: 2%;
-  color: white;
-  background-color: #000;
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -279,11 +372,22 @@ small {
 /* Dashboard */
 
 .dashboardWrapper {
-  margin-top: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 90%;
+  margin: 10% auto 0 auto;
+  padding: 1rem;
+  border-radius: 48px;
+  box-shadow: 0px 0px 20px -2px #000000;
+}
+
+.dashboardWrapper .title {
+  display: flex;
+  flex-direction: column;
 }
 
 .lastLiked {
@@ -293,15 +397,10 @@ small {
 }
 
 .dashboardWrapper .yo {
-  font-size: 1rem;
-  padding: 7px;
+  padding: 0.5rem;
 }
 
 .lastLiked .postItem h2 {
-  color: black;
-}
-
-.lastLiked .postItem p {
   color: black;
 }
 
@@ -314,7 +413,7 @@ small {
   justify-content: center;
   margin: 0 auto;
   margin-top: 1%;
-  width: 10%;
+  width: 20%;
   font-size: 2rem;
   padding: 1%;
   border-radius: 10px;
@@ -339,7 +438,7 @@ small {
   margin-top: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .postItemDetail .postItem {
@@ -350,11 +449,12 @@ small {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 2%;
 }
 
 .addCommentForm {
-  padding-left: 40%;
-  padding-right: 40%;
+  padding-left: 30%;
+  padding-right: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -362,39 +462,49 @@ small {
 
 .postItemDetail .comments {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
 }
 
 .comment {
+  display: flex;
   background-color: white;
   border: 2px black solid;
-  padding: 2%;
-  width: 10%;
-  display: flex;
+  padding: 1rem;
   justify-content: flex-start;
   margin-top: 10px;
   margin-left: 10px;
-}
-
-.commentContent p {
-  font-size: 1rem;
+  flex-direction: column;
 }
 
 .comment button {
-  color: black;
-  border: 2px solid black;
   cursor: pointer;
+  background-color: unset;
+  padding: 0.5rem;
+  width: 5%;
+  align-self: flex-end;
 }
 
 /* alert */
 
 .alertPosition {
   margin-top: 5%;
-  margin-bottom: 0px;
   font-size: 2rem;
   text-align: center;
+  position: absolute;
+  top: 2%;
+  left: 40%;
+  right: 40%;
+
+  transform: translateY(-50%, -50%);
+  z-index: 5;
+
+  background-color: white;
+  box-shadow: 0px 0px 20px -2px #000000;
+  border-radius: 12px;
 }
 
 .alert-success {
