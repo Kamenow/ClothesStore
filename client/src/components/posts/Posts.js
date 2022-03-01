@@ -6,28 +6,35 @@ import PostItem from './PostItem.js';
 import { getPosts } from '../../actions/post.js';
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
-    useEffect(() => {
-        getPosts();
-    }, [getPosts])
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
 
-    return (
-        <Fragment>
-            <div className="storeItem">
-                {posts.map(post => (
-                    < PostItem key={post._id} post={post} showActions={true} />
-                ))}
-            </div>
-        </Fragment>
-    )
-}
+  console.log(posts);
+
+  return (
+    <Fragment>
+      {posts ? (
+        <div className='storeItem'>
+          {posts.map((post) => (
+            <PostItem key={post._id} post={post} showActions={true} />
+          ))}
+          <div className='background-image'></div>
+        </div>
+      ) : (
+        <p>NoPosts</p>
+      )}
+    </Fragment>
+  );
+};
 
 Posts.propTypes = {
-    getPosts: PropTypes.func.isRequired,
-    post: PropTypes.object.isRequired
-}
+  getPosts: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
-    post: state.post
-})
+const mapStateToProps = (state) => ({
+  post: state.post,
+});
 
-export default connect(mapStateToProps, { getPosts })(Posts)
+export default connect(mapStateToProps, { getPosts })(Posts);

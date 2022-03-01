@@ -5,36 +5,38 @@ import { connect } from 'react-redux';
 import { deleteComment } from '../../actions/post.js';
 
 const CommentItem = ({
-    postId,
-    comment: { _id, text, name, avatar, user, date },
-    auth,
-    deleteComment
+  postId,
+  comment: { _id, text, name, avatar, user, date },
+  auth,
+  deleteComment,
 }) => {
-    return (
-        <div className='comment' >
-            <div className='commentContent'>
-                <p>from: {name}</p>
-                <p>text: {text}</p>
+  return (
+    <div className='comment'>
+      <p>
+        <i class='fa-solid fa-user'></i> {name}
+      </p>
+      <p>
+        <i class='fa-solid fa-comment'></i> {text}
+      </p>
 
-                {!auth.loading && user === auth.user._id && (
-                    <button onClick={e => deleteComment(postId, _id)} type='button'>delete</button>
-                )}
-            </div>
-
-
-        </div>
-    )
-}
+      {!auth.loading && user === auth.user._id && (
+        <button onClick={(e) => deleteComment(postId, _id)} type='button'>
+          <i class='fa-solid fa-trash-can'></i>
+        </button>
+      )}
+    </div>
+  );
+};
 
 CommentItem.propTypes = {
-    postId: PropTypes.number.isRequired,
-    comment: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired,
-    deleteComment: PropTypes.func.isRequired,
-}
+  postId: PropTypes.number.isRequired,
+  comment: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  deleteComment: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = state => ({
-    auth: state.auth
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default connect(mapStateToProps, { deleteComment })(CommentItem)
+export default connect(mapStateToProps, { deleteComment })(CommentItem);
