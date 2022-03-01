@@ -8,91 +8,100 @@ import { getCurrentProfile } from '../../actions/profile.js';
 import PostItem from '../posts/PostItem.js';
 import { useNavigate } from 'react-router-dom';
 
+const Dashboard = ({
+  getCurrentProfile,
+  auth: { user },
+  profile: { profile, loading },
+  post: { posts },
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
-const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading }, post: { posts } }) => {
-    useEffect(() => {
-        getCurrentProfile();
-    }, []);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  //   console.log(posts);
 
-    let three = [];
-    let sorted = posts.sort(function (a, b) {
-        return new Date(a.date) - new Date(b.date)
-    });
-    let mapped = sorted.map(post => {
-        post.likes.forEach(liked => liked.user == user._id ? three.push(post) : '')
-    }
-    )
-    let sliced = three.slice(0, 3);
+  //   let three = [];
+  //   let sorted = posts.sort(function (a, b) {
+  //     return new Date(a.date) - new Date(b.date);
+  //   });
+  //   let mapped = sorted.map((post) => {
+  //     post.likes.forEach((liked) =>
+  //       liked.user == user._id ? three.push(post) : ''
+  //     );
+  //   });
+  //   let sliced = three.slice(0, 3);
 
-    if (profile === null) {
-        navigate('/create-profile')
-    }
+  if (profile === null) {
+    navigate('/create-profile');
+  }
 
-    return profile === null
-        ? <Fragment>{navigate('/create-profile')}</Fragment>
-        : (
-            <div className='dashboardWrapper'>
-                <Fragment >
-                    {
-                        profile !== null
-                            ? <Fragment>
-                                <div className='title'>
-                                    <h1>Dashboard</h1 >
-                                    <p className='yo'>Welcome {user && user.name}</p>
-                                </div >
+  return profile === null ? (
+    <Fragment>{navigate('/create-profile')}</Fragment>
+  ) : (
+    <div className='dashboardWrapper'>
+      <Fragment>
+        {profile !== null ? (
+          <Fragment>
+            <div className='title'>
+              <h1>Dashboard</h1>
+              <p className='yo'>Welcome {user && user.name}</p>
+            </div>
 
-                                <Fragment>
-                                    <div className='info'>
-                                        <p className='yo'>company: {profile.company}</p>
-                                        <p className='yo'>location: {profile.location}</p>
-                                        <p className='yo'>website: {profile.website}</p>
-                                    </div>
-                                </Fragment>
+            <Fragment>
+              <div className='info'>
+                <p className='yo'>
+                  <i class='fa-solid fa-building'></i> {profile.company}
+                </p>
+                <p className='yo'>
+                  <i class='fa-solid fa-location-dot'></i> {profile.location}
+                </p>
+                <p className='yo'>
+                  <i class='fa-solid fa-pager'></i> {profile.website}
+                </p>
+              </div>
+            </Fragment>
 
-                                <div className='bio'>
-                                    <p className='yo'>bio:</p>
-                                    <p>
-                                        {profile.bio}
-                                    </p>
-                                </div>
+            <div className='bio'>
+              <h2 className='yo'>bio:</h2>
+              <p>{profile.bio}</p>
+            </div>
 
-                                {sliced.length > 0 && (
-                                    <h2 className='lastLikedTextSize'>Last Liked</h2>
-                                )}
+            {posts.length > 0 && (
+              <h2 className='lastLikedTextSize'>Last Liked</h2>
+            )}
 
-                                <div className='lastLiked'>
-                                    {sliced.map(liked => (
-                                        <PostItem key={liked._id} post={liked} showActions={false} />
-                                    ))}
-                                </div>
+            <div className='lastLiked'>
+              {posts.map((liked) => (
+                <PostItem key={liked._id} post={liked} showActions={false} />
+              ))}
+            </div>
 
-                                <DashboardActions />
-                            </Fragment>
-                            : <Fragment>
-                                <p>You have not yet setup a profile, please add some info</p>
-                                <Link to='/create-profile'>
-                                    Create Profile
-                                </Link>
-                            </Fragment>
-                    }
-                </Fragment >
-            </div >
-        )
-}
+            <DashboardActions />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to='/create-profile'>Create Profile</Link>
+          </Fragment>
+        )}
+      </Fragment>
+    </div>
+  );
+};
 
 Dashboard.propTypes = {
-    getCurrentProfile: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired,
-    post: PropTypes.object.isRequired,
-}
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-    profile: state.profile,
-    post: state.post
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  profile: state.profile,
+  post: state.post,
+});
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard)
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
